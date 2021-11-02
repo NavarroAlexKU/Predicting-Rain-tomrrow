@@ -1,0 +1,75 @@
+---
+title: "Prediciting Rain Tomorrow"
+author: "Alex Navarro"
+date: "11/1/2021"
+output: html_document
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+Load Packages and read data into system
+```{r, setup, include=FALSE}
+set.seed(1)
+library(ROCR)
+library(rpart)
+library(rpart.plot)
+library(lattice)
+library(naivebayes)
+library(nnet)
+library(NeuralNetTools)
+
+# Read data into system:
+weather <- read.csv("weather.csv")
+
+# check head 10 of data:
+head(weather, n = 10)
+
+# Check for NaN Values:
+sum(is.na(weather))
+
+# View Data Structure:
+str(weather)
+
+# Convert Rain Tomorrow to Factor:
+weather$RainTomorrow <- as.factor(weather$RainTomorrow)
+# Split data into training/test set:
+train=sample(17378,15000)
+test=(c(1:17378)[-train])
+weather_train <- weather[train,]
+weather_test <- weather[test,]
+```
+# Modeling:
+```{r, echo=FALSE}
+# Forward Stepwise Regression:
+
+# Specify a null model with no predictors:
+null_model <- glm(RainTomorrow ~ 1, data = weather_train, family = binomial)
+# Specify the full model using all of the potential predictors:
+full_model <- glm(RainTomorrow ~ ., data = weather_train, family = binomial)
+# Use a forward stepwise algorithm to build a parsimonious model:
+step_model <- step(null_model, scope = list(lower = null_model, upper = full_model), direction = "forward")
+# Create Model Using best stepwise output:
+step_model2 <- glm(RainTomorrow ~ Sunshine + Pressure3pm + AveHumidity + WindGustSpeed +
+             DifHumidity + Cloud3pm + WindSpeed3pm + Rainfall + WindDir3pm +
+             RainToday + MaxTemp + MinTemp, family = "binomial",data = weather_train)
+summary(step_model2)
+```
+# Model Diagnostics:
+```{r, echo=FALSE}
+# Plot the ROC of the stepwise model, tpr,fpr,fnr: and predict:
+# Estimate the stepwise donation probability
+step_prob <- predict(step_model2,newdata=weather_test,type = "response")
+step_prob
+# Plot the ROC of the stepwise model
+pred=ifelse(step_prob>.2,1,0)
+table(pred,weather_test$RainTomorrow)
+pre=prediction(step_prob,weather_test$RainTomorrow)
+perf = performance(pre,"tpr","fpr")
+plot(perf,main="ROC plot")
+perf=performance(pre,"fpr","cutoff", col = c("blue"))
+plot(perf,col = c("blue"))
+perf=performance(pre,"fnr","cutoff")
+plot(perf, col = c("green"))
+```
