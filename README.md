@@ -43,3 +43,13 @@ I'm going to build four separate classification models using the following metho
 ### Logistic Regression:
 The first model I will build is a logistic regression model. I'm going to use forward stepwise regression to determine the features most important for my model. Our final model will be based off the best AIC value. We want to choose the model that has the lowest AIC value. For more information on forward stepwise and AIC, please see the following link.
 [Stepwise Regression](https://en.wikipedia.org/wiki/Stepwise_regression)
+
+The following is the optimal model output for the logistic regression model:
+
+Optimal Model Based On Best AIC:
+
+![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-03%20at%204.40.06%20PM.png?raw=True)
+
+Logsitic Regression Model Output
+
+![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/R%20Logo.png?raw=True)
