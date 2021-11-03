@@ -58,10 +58,13 @@ Confusion Matrix:
 ![App Screenshot](![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/R%20Logo.png?raw=True)?raw=True)
 
 ROC Plot:
+
 ![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-03%20at%205.24.20%20PM.png?raw=True)
 
 #False Positive Plot:
+
 ![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-03%20at%205.24.28%20PM.png?raw=True)
 
 # False Negative:
+
 ![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-03%20at%205.24.45%20PM.png?raw=True)
