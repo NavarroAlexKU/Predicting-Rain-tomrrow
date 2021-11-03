@@ -38,7 +38,7 @@ weather_train <- weather[train,]
 weather_test <- weather[test,]
 ```
 # Modeling:
-```{r, echo=FALSE}
+```{r, setup=FALSE}
 # Forward Stepwise Regression:
 # Specify a null model with no predictors:
 null_model <- glm(RainTomorrow ~ 1, data = weather_train, family = binomial)
@@ -48,7 +48,7 @@ full_model <- glm(RainTomorrow ~ ., data = weather_train, family = binomial)
 step_model <- step(null_model, scope = list(lower = null_model, upper = full_model), direction = "forward")
 # Use a forward stepwise algorithm to build a parsimonious model:
 ```
-```{r, echo=FALSE}
+```{r, setup=FALSE}
 # Create Model Using best stepwise output:
 step_model2 <- glm(RainTomorrow ~ Sunshine + Pressure3pm + AveHumidity + WindGustSpeed + 
     DifHumidity + Cloud3pm + WindSpeed3pm + Rainfall + WindDir3pm + 
@@ -56,13 +56,13 @@ step_model2 <- glm(RainTomorrow ~ Sunshine + Pressure3pm + AveHumidity + WindGus
 summary(step_model2)
 ```
 # Model Diagnostics:
-```{r, echo=FALSE}
+```{r, setup=FALSE}
 # Plot the ROC of the stepwise model, tpr,fpr,fnr: and predict:
 # Estimate the stepwise donation probability
 step_prob <- predict(step_model2,newdata=weather_test,type = "response")
 step_prob
 ```
-```{r, echo=FALSE}
+```{r, setup=FALSE}
 # Plot the ROC of the stepwise model
 pred=ifelse(step_prob>.2,1,0)
 table(pred,weather_test$RainTomorrow)
