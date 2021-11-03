@@ -33,3 +33,13 @@ install.packages("ROCR")
 
 install.packages("rpart")
 ```
+## Modeling:
+I'm going to build four separate classification models using the following methods:
+* Logistic Regression
+* Decision Tree Classification
+* Naive Bayes Classification
+* Neural Network Classification
+
+### Logistic Regression:
+The first model I will build is a logistic regression model. I'm going to use forward stepwise regression to determine the features most important for my model. Our final model will be based off the best AIC value. We want to choose the model that has the lowest AIC value. For more information on forward stepwise and AIC, please see the following link.
+[Stepwise Regression](https://en.wikipedia.org/wiki/Stepwise_regression)
