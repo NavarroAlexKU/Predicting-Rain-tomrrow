@@ -96,5 +96,22 @@ auc(ROC)
 #Total = 1420+109+397+452
 #Overall_Error_Rate = (397+109)/Total
 #Overall_Error_Rate
-prob
+```
+# Decision Tree Classifier:
+```{r, setup = FALSE}
+set.seed(1)
+library(rpart)
+library(rpart.plot)
+train=sample(17378,15000)
+test=(c(1:17378)[-train])
+weather_train <- weather[train,]
+weather_test <- weather[test,]
+# convert variables to factor:
+weather$WindGustDir <- factor(weather$WindGustDir)
+weather$WindDir3pm <- factor(weather$WindDir3pm)
+# Create first Model:
+m1 <- rpart(RainTomorrow~.,data=weather_train,method="class")
+printcp(m1)
+plotcp(m1)
+rpart.plot(m1,type=3,extra=1)
 ```
