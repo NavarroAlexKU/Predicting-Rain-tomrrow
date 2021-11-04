@@ -73,4 +73,22 @@ perf=performance(pre,"fpr","cutoff", col = c("blue"))
 plot(perf,col = c("blue"))
 perf=performance(pre,"fnr","cutoff")
 plot(perf, col = c("green"))
+plot(perf)
+
+FPR = 397(1420+397)
+FPR
+FNR = 109/(109+452)
+FNR
+Total = 1420+109+397+452
+Overall_Error_Rate = (397+109)/Total
+Overall_Error_Rate
+```
+```{r,cache=FALSE}
+FPR = 397/(1420+397)
+FPR*100
+FNR = 109/(109+452)
+FNR*100
+Total = 1420+109+397+452
+Overall_Error_Rate = (397+109)/Total
+Overall_Error_Rate*100
 ```
