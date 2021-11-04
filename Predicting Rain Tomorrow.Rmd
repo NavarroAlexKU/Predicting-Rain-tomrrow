@@ -16,9 +16,11 @@ library(ROCR)
 library(rpart)
 library(rpart.plot)
 library(lattice)
+library(pROC)
 library(naivebayes)
 library(nnet)
 library(NeuralNetTools)
+library(caTools)
 # Read data into system:
 weather <- read.csv("weather.csv")
 # check head 10 of data:
@@ -63,32 +65,36 @@ step_prob <- predict(step_model2,newdata=weather_test,type = "response")
 step_prob
 ```
 ```{r, setup=FALSE}
+set.seed(1)
 # Plot the ROC of the stepwise model
 pred=ifelse(step_prob>.2,1,0)
 table(pred,weather_test$RainTomorrow)
 pre=prediction(step_prob,weather_test$RainTomorrow)
 perf = performance(pre,"tpr","fpr")
-plot(perf,main="ROC plot")
+plot(perf,auc.polygon=TRUE, main="ROC plot")
 perf=performance(pre,"fpr","cutoff", col = c("blue"))
 plot(perf,col = c("blue"))
 perf=performance(pre,"fnr","cutoff")
 plot(perf, col = c("green"))
-plot(perf)
 
-FPR = 397(1420+397)
-FPR
-FNR = 109/(109+452)
-FNR
-Total = 1420+109+397+452
-Overall_Error_Rate = (397+109)/Total
-Overall_Error_Rate
+prob=predict(step_model2,newdata=weather_train,type="response")
+
+prob=predict(step_model2,newdata=weather,type="response")
+pre=prediction(prob,weather$RainTomorrow)
+perf=performance(pre,"tpr","rpp")
+plot(perf, main="gain curve",print.cutoffs.at=c(.1,.2,.3,.4,.5))
+abline(0,1)
+# Calculate AUC:
+ROC <- roc(weather$RainTomorrow, prob)
+auc(ROC)
 ```
-```{r,cache=FALSE}
-FPR = 397/(1420+397)
-FPR*100
-FNR = 109/(109+452)
-FNR*100
-Total = 1420+109+397+452
-Overall_Error_Rate = (397+109)/Total
-Overall_Error_Rate*100
+```{r, setup=FALSE}
+#FPR_Variable <- 397(1420+397)
+#FPR
+#FNR = 109/(109+452)
+#FNR
+#Total = 1420+109+397+452
+#Overall_Error_Rate = (397+109)/Total
+#Overall_Error_Rate
+prob
 ```
