@@ -121,6 +121,10 @@ Model CP Error Output:
 
 ![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-03%20at%209.20.10%20PM.png?raw=True)
 
+The column labeled “xerror” is the cross-validation error for different subsets of the tree. What we are looking for is a low cross validation error. The column labeled “xstd” gives the standard errors of the cross validation errors. This column can be used to get an idea of how much the values in the “xerror” column could reasonably vary.
+
+Looking at the xerror column, we can see that xerror starts to level out with the fourth value 0.72250 Thus, the tree corresponding to the fourth row is the tree that gives us nearly the lowest cross validation error with a CP of 0.010000. We will use this to prune our tree as we do not want to overfit the model.
+
 Tree Model 1 Summary Statistics:
 
 ![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-03%20at%209.20.03%20PM.png?raw=True)
