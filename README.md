@@ -69,3 +69,29 @@ False Positive Plot:
 False Negative:
 
 ![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-03%20at%205.24.45%20PM.png?raw=True)
+
+Calculating:
+* False Positive Rate
+* False Negative Rate
+* Overall Error Rate
+* Sensitivity
+* Specificity
+
+FPR = 397/(1420+397)*100
+* False Positive Rate = 21%
+
+FNR = 109/(109+452)*100
+* False Negative Rate = 22%
+
+Total = 1420+109+397+452
+Overall_Error_Rate = ((397+109)/Total)*100
+Overall_Error_Rate = 21%
+
+Sensitivity = 1 - 0.22 = 0.78%
+So a little over 78% of the time these weather stations are correctly predicting rain tomorrow.
+
+Specificity = 1 - 0.21 = 0.79%
+So a little over 79% of the time these weather stations are correctly predicting when it will not rain tomorrow.
+
+![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-03%20at%206.06.15%20PM.png?raw=True)
+
