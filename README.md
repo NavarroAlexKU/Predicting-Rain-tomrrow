@@ -133,6 +133,6 @@ Prune Tree:
 
 ![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-04%20at%205.08.51%20PM.png?raw=True)
 
-# Error Rate Prune Tree:
+Error Rate Prune Tree:
 
 ![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-04%20at%205.08.57%20PM.png?raw=True)
