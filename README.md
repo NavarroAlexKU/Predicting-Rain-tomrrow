@@ -85,7 +85,7 @@ FNR = 109/(109+452)*100
 
 Total = 1420+109+397+452
 Overall_Error_Rate = ((397+109)/Total)*100
-Overall_Error_Rate = 21%
+* Overall_Error_Rate = 21%
 
 Sensitivity = 1 - 0.22 = 0.78%
 So a little over 78% of the time these weather stations are correctly predicting rain tomorrow.
