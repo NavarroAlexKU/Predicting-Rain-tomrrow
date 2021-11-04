@@ -128,3 +128,11 @@ Looking at the xerror column, we can see that xerror starts to level out with th
 Tree Model 1 Summary Statistics:
 
 ![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-03%20at%209.20.03%20PM.png?raw=True)
+
+Prune Tree:
+
+![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-04%20at%205.08.51%20PM.png?raw=True)
+
+# Error Rate Prune Tree:
+
+![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-04%20at%205.08.57%20PM.png?raw=True)
