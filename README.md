@@ -70,6 +70,9 @@ False Negative:
 
 ![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-03%20at%205.24.45%20PM.png?raw=True)
 
+
+![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-03%20at%206.06.15%20PM.png?raw=True)
+
 Calculating:
 * False Positive Rate
 * False Negative Rate
@@ -92,6 +95,4 @@ So a little over 78% of the time these weather stations are correctly predicting
 
 Specificity = 1 - 0.21 = 0.79%
 So a little over 79% of the time these weather stations are correctly predicting when it will not rain tomorrow.
-
-![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-03%20at%206.06.15%20PM.png?raw=True)
 
