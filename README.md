@@ -108,3 +108,17 @@ Based on the above plots, I believe that a good cut off point is 0.02 as we star
 Next we will want to check the AUC (area under curve) for our model. We want the ROC curve as far as possible towards the left. Good rule of thumb is if our AUC > 0.7 means our model is good enough. Our AUC is 88% so we have a good enough model.
 
 ![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-03%20at%208.19.33%20PM.png?raw=True)
+
+### Decision Tree Classifier:
+
+First Tree:
+
+![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-03%20at%209.18.55%20PM.png?raw = True)
+
+Model CP Error Output:
+
+![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-03%20at%209.20.10%20PM.png?raw=True)
+
+# Tree Model 1 Summary Statistics:
+
+![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-03%20at%209.20.03%20PM.png?raw=True)
