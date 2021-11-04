@@ -64,7 +64,7 @@ summary(step_model2)
 step_prob <- predict(step_model2,newdata=weather_test,type = "response")
 step_prob
 ```
-```{r, setup=FALSE}
+```{r,setup=FALSE}
 set.seed(1)
 # Plot the ROC of the stepwise model
 pred=ifelse(step_prob>.2,1,0)
@@ -76,17 +76,15 @@ perf=performance(pre,"fpr","cutoff", col = c("blue"))
 plot(perf,col = c("blue"))
 perf=performance(pre,"fnr","cutoff")
 plot(perf, col = c("green"))
-
 prob=predict(step_model2,newdata=weather_train,type="response")
-
 prob=predict(step_model2,newdata=weather,type="response")
 pre=prediction(prob,weather$RainTomorrow)
 perf=performance(pre,"tpr","rpp")
 plot(perf, main="gain curve",print.cutoffs.at=c(.1,.2,.3,.4,.5))
 abline(0,1)
 # Calculate AUC:
-ROC <- roc(weather$RainTomorrow, prob)
-auc(ROC)
+#ROC <- roc(weather$RainTomorrow, prob)
+#auc(ROC)
 ```
 ```{r, setup=FALSE}
 #FPR_Variable <- 397(1420+397)
@@ -114,4 +112,9 @@ m1 <- rpart(RainTomorrow~.,data=weather_train,method="class")
 printcp(m1)
 plotcp(m1)
 rpart.plot(m1,type=3,extra=1)
+
+# Produce the prune tree using the CP value 0.018465:
+m2=prune(m1,cp=0.017337)
+rpart.plot(m2,type=3,extra=1)
+plotcp(m2, col = c("green"))
 ```

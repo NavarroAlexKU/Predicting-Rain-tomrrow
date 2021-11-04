@@ -123,7 +123,7 @@ Model CP Error Output:
 
 The column labeled “xerror” is the cross-validation error for different subsets of the tree. What we are looking for is a low cross validation error. The column labeled “xstd” gives the standard errors of the cross validation errors. This column can be used to get an idea of how much the values in the “xerror” column could reasonably vary.
 
-Looking at the xerror column, we can see that xerror starts to level out with the fourth value 0.72250 Thus, the tree corresponding to the fourth row is the tree that gives us nearly the lowest cross validation error with a CP of 0.010000. We will use this to prune our tree as we do not want to overfit the model.
+Looking at the xerror column, we can see that xerror starts to level out with the third value 0.76981 and isn't much different in error rate vs the 0.70513 value. Thus, the tree corresponding to the third row is the tree that gives us nearly the lowest cross validation error and least complicated model using a cp of 0.017337. We will use this to prune our tree as we do not want to overfit the model.
 
 Tree Model 1 Summary Statistics:
 
