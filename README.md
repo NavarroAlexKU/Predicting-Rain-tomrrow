@@ -113,7 +113,7 @@ Next we will want to check the AUC (area under curve) for our model. We want the
 
 First Tree:
 
-![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-03%20at%209.18.55%20PM.png?raw = True)
+![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-03%20at%209.18.55%20PM.png?raw=True)
 
 Model CP Error Output:
 
