@@ -121,6 +121,6 @@ Model CP Error Output:
 
 ![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-03%20at%209.20.10%20PM.png?raw=True)
 
-# Tree Model 1 Summary Statistics:
+Tree Model 1 Summary Statistics:
 
 ![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-03%20at%209.20.03%20PM.png?raw=True)
