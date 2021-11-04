@@ -22,6 +22,7 @@ You can get the dataset used in the analysis by downloading it from my GitHub we
 ![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/R%20Logo.png?raw=True)
 The analysis was done using R, you will need the following packages to run the code.
 * library(ROCR)
+* library(pROC)
 * library(rpart)
 * library(rpart.plot)
 * library(lattice)
@@ -96,3 +97,14 @@ So a little over 78% of the time these weather stations are correctly predicting
 Specificity = 1 - 0.21 = 0.79%
 So a little over 79% of the time these weather stations are correctly predicting when it will not rain tomorrow.
 
+ROC Curve and Area Under Curve:
+
+
+![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-03%20at%207.31.37%20PM.png?raw=True)
+
+
+Based on the above plots, I believe that a good cut off point is 0.02 as we start to see the curves flatten around 0.02
+
+# Next we will want to check the AUC (area under curve) for our model. We want the ROC curve as far as possible towards the left. Good rule of thumb is if our AUC > 0.7 means our model is good enough. Our AUC is 88% so we have a good enough model.
+
+![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-03%20at%208.19.33%20PM.png?raw=True)
