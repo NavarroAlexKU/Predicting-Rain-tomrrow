@@ -155,7 +155,7 @@ False Negative Rate Plot:
 
 ![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-05%20at%208.38.00%20AM.png?raw=True)
 
-![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-05%20at%208.38.00%20AM.png?raw = True)
+![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-03%20at%206.06.15%20PM.png?raw=True)
 
 * fpr = 384/(1474+384)
 + False_Positive_Rate = fpr
