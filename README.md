@@ -199,10 +199,12 @@ Model Output Plots:
 
 ![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-05%20at%2012.28.12%20PM.png?raw=True)
 
+After looking at the print out of our plots, I have decided to remove WindGustDir and variable WindDir3pm as these “Yes” and “No” are not that much different and they wouldn’t help make an impact on our model.
+
 Error Rate Plots and ROC:
 
 ![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-05%20at%2012.28.31%20PM.png?raw=True)
 
 ![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-05%20at%208.37.53%20AM.png?raw=True)
 
-![App Screenshot]()
+![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-05%20at%2012.28.43%20PM.png?raw=True)
