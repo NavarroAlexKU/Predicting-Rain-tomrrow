@@ -175,3 +175,20 @@ False Negative Rate Plot:
 Sensitivity is 68% so roughly around 68% of the time these weather stations are correctly predicting rain tomorrow.
 
 Specificity is 68% so roughly around 68% of the time these weather stations are correctly predicting no rain tomorrow.
+
+### NaiveBayes:
+Now I will create a model using naivebayes as my classification model and compute the error rates.
+
+Preliminary Analysis:
+Now I will conduct histograms of the continuous variables to see if there is any relation within the variables. That way I can eliminate variables that I don’t believe will help my model. We want the Yes and No levels of the histogram to look different; this will give us a good indication that we should include this variable in our model.
+
+Below is a sample of some of the variables plotted:
+
+![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-05%20at%2011.57.04%20AM.png?raw=True)
+
+Variables to keep:
+Looking at the Pearson’s Chi-squared test for our categorical variables, we want to keep all three of these variables, WindGustDir, WindDir3pm, and RainToday for their p-values are less than 0.05.
+
+![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-05%20at%2012.00.41%20PM.png?raw=True)
+
+![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-05%20at%2012.02.35%20PM.png?raw=True)
