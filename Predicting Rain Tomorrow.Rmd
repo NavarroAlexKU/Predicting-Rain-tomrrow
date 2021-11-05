@@ -118,3 +118,104 @@ m2=prune(m1,cp=0.017337)
 rpart.plot(m2,type=3,extra=1)
 plotcp(m2, col = c("green"))
 ```
+```{r, setup = FALSE}
+set.seed(1)
+prob <- predict(m2,newdata=weather_test,type = "prob")
+prob
+# Plot the ROC of the stepwise model
+pred=ifelse(prob[,2]>.3,1,0)
+table(pred,weather_test$RainTomorrow)
+library(ROCR)
+pre=prediction(prob[,2],weather_test$RainTomorrow)
+perf = performance(pre,"tpr","fpr")
+plot(perf,main="ROC plot")
+perf=performance(pre,"fpr","cutoff", col = c("blue"))
+plot(perf,col = c("blue"))
+perf=performance(pre,"fnr","cutoff")
+plot(perf, col = c("green"))
+```
+```{r,setup=FALSE}
+fpr = 384/(1474+384)
+False_Positive_Rate = fpr
+False_Positive_Rate
+
+fnr = 165/(165+355)
+False_Negative_Rate = fnr
+False_Negative_Rate
+
+Overall_Error_Rate = (384+165)/2378
+Overall_Error_Rate
+
+Sensitivity = 1 - False_Negative_Rate
+Sensitivity
+
+Specificity = 1 - False_Positive_Rate
+Sensitivity
+```
+# NaiveBayes Modeling:
+```{r, setup = FALSE}
+set.seed(1)
+library(lattice)
+# Split data into training/test set:
+train=sample(17378,15000)
+test=(c(1:17378)[-train])
+weather_train <- weather[train,]
+weather_test <- weather[test,]
+
+# Change variables WindGustDir and WindDir3pm into factor variables with 2 levels:
+weather$WindGustDir <- factor(weather$WindGustDir)
+weather$WindDir3pm <- factor(weather$WindDir3pm)
+weather$RainTomorrow <- factor(weather$RainTomorrow)
+
+# Plots:
+histogram(~MaxTemp|RainTomorrow,data = weather_train,layout=c(1,2), main = "Histogram of MaxTemp")
+histogram(~Rainfall|RainTomorrow,data = weather_train,layout=c(1,2), main = "Histogram of Rainfall")
+histogram(~Evaporation|RainTomorrow,data = weather_train,layout=c(1,2), main = "Histogram of Evaporation")
+histogram(~Sunshine|RainTomorrow,data = weather_train,layout=c(1,2), main = "Histogram of Sunshine")
+histogram(~WindGustSpeed|RainTomorrow,data = weather_train,layout=c(1,2), main = "Histogram of WindGustSpeed")
+histogram(~WindSpeed3pm|RainTomorrow,data = weather_train,layout=c(1,2), main = "Histogram of WindSpeed3pm")
+histogram(~Pressure3pm|RainTomorrow,data = weather_train,layout=c(1,2), main = "Histogram of Pressure3pm")
+histogram(~Cloud3pm|RainTomorrow,data = weather_train,layout=c(1,2), main = "Histogram of Cloud3pm")
+histogram(~Temp3pm|RainTomorrow,data = weather_train,layout=c(1,2), main = "Histogram of Temp3pm")
+histogram(~AveHumidity|RainTomorrow,data = weather_train,layout=c(1,2), main = "Histogram of AveHumidity")
+histogram(~DifHumidity|RainTomorrow,data = weather_train,layout=c(1,2), main = "Histogram of DifHumidity")
+
+# Perform a test of independence for the categorical variables:
+chisq.test(weather_train$RainTomorrow,weather_train$WindGustDir)
+chisq.test(weather_train$RainTomorrow,weather_train$WindDir3pm)
+chisq.test(weather_train$RainTomorrow,weather_train$RainToday)
+# Create dataframe for choosen variables:
+x.vars=c(5,7,11,13,15)
+x=weather_train[,x.vars]
+y=weather_train$RainTomorrow
+# load naivebayes library:
+library(naivebayes)
+model=naive_bayes(x,y,usekernel=TRUE)
+plot(model)
+library(ROCR)
+prob=predict(model,x,type='prob')
+pred=prediction(prob[,2],y)
+perf=performance(pred,"tpr","fpr")
+plot(perf,main='ROC Plot')
+perf=performance(pred,"fnr","cutoff")
+plot(perf, col = c("green"))
+perf=performance(pred,"fpr","cutoff")
+plot(perf, col = c("purple"))
+# Plot Gain Curve:
+perf=performance(pre,"tpr","rpp")
+plot(perf, main = "Gain Curve", print.cutoffs.at=c(.1,.2,.3,.4,.5))
+abline(0,1)
+# Compute and print the confusion matrix:
+# Model is the name of the Naive Bayes estimated model and x is the input variables:
+# y is th ename of the response variable and .3 is the cutoff value.
+prob = predict(model, x, type = 'prob')
+pred=ifelse(prob[,2]>.3,1,0)
+table(pred,y)
+# Modifications to compute and print the confusion matrix for the test data:
+# Note that x and y need to be reset to the test data values.
+x=weather_test[,x.vars]
+y=weather_test$RainTomorrow
+prob=predict(model,x,type="prob")
+pred=ifelse(prob[,2]>.3,1,0)
+table(pred,weather_test$RainTomorrow)
+```
