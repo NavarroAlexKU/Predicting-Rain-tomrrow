@@ -41,7 +41,7 @@ I'm going to build four separate classification models using the following metho
 * Naive Bayes Classification
 * Neural Network Classification
 
-### Logistic Regression:
+# Logistic Regression:
 The first model I will build is a logistic regression model. I'm going to use forward stepwise regression to determine the features most important for my model. Our final model will be based off the best AIC value. We want to choose the model that has the lowest AIC value. For more information on forward stepwise and AIC, please see the following link.
 [Stepwise Regression](https://en.wikipedia.org/wiki/Stepwise_regression)
 
@@ -109,7 +109,7 @@ Next we will want to check the AUC (area under curve) for our model. We want the
 
 ![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-03%20at%208.19.33%20PM.png?raw=True)
 
-### Decision Tree Classifier:
+# Decision Tree Classifier:
 
 Now I will build the second classification model using decision trees.
 
@@ -176,7 +176,7 @@ Sensitivity is 68% so roughly around 68% of the time these weather stations are 
 
 Specificity is 68% so roughly around 68% of the time these weather stations are correctly predicting no rain tomorrow.
 
-### NaiveBayes:
+# NaiveBayes:
 Now I will create a model using naivebayes as my classification model and compute the error rates.
 
 Preliminary Analysis:
