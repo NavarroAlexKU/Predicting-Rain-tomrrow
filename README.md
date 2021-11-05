@@ -136,3 +136,40 @@ Prune Tree:
 Error Rate Prune Tree:
 
 ![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-04%20at%205.08.57%20PM.png?raw=True)
+
+Now will look at the cut off points for our predictions then compute the error metrics using the confusion matrix:
+
+ROC Plot
+
+![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-05%20at%208.37.38%20AM.png?raw=True)
+
+False Positive Rate Plot:
+
+![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-05%20at%208.37.46%20AM.png?raw=True)
+
+False Negative Rate Plot:
+
+![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-05%20at%208.37.53%20AM.png?raw=True)
+
+# Confusion Matrix: Calculation:
+
+![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-05%20at%208.38.00%20AM.png?raw=True)
+
+![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-05%20at%208.38.00%20AM.png?raw = True)
+
+* fpr = 384/(1474+384)
++ False_Positive_Rate = fpr
++ False_Positive_Rate
+
+fnr = 165/(165+355)
+False_Negative_Rate = fnr
+False_Negative_Rate
+
+Overall_Error_Rate = (384+165)/2378
+Overall_Error_Rate
+
+Sensitivity = 1 - False_Negative_Rate
+Sensitivity
+
+Specificity = 1 - False_Positive_Rate
+Sensitivity
