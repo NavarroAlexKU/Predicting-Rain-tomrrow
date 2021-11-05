@@ -192,3 +192,17 @@ Looking at the Pearson’s Chi-squared test for our categorical variables, we wa
 ![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-05%20at%2012.00.41%20PM.png?raw=True)
 
 ![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-05%20at%2012.02.35%20PM.png?raw=True)
+
+Model Output Plots:
+
+![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-05%20at%2012.29.33%20PM.png?raw=True)
+
+![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-05%20at%2012.28.12%20PM.png?raw=True)
+
+Error Rate Plots and ROC:
+
+![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-05%20at%2012.28.31%20PM.png?raw=True)
+
+![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-05%20at%208.37.53%20AM.png?raw=True)
+
+![App Screenshot]()
