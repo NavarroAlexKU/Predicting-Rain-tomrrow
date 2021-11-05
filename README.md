@@ -158,18 +158,18 @@ False Negative Rate Plot:
 ![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-03%20at%206.06.15%20PM.png?raw=True)
 
 * fpr = 384/(1474+384)
-+ False_Positive_Rate = fpr
-+ False_Positive_Rate
+** False_Positive_Rate = fpr
+** False_Positive_Rate
 
-fnr = 165/(165+355)
-False_Negative_Rate = fnr
-False_Negative_Rate
+* fnr = 165/(165+355)
+** False_Negative_Rate = fnr
+** False_Negative_Rate
 
-Overall_Error_Rate = (384+165)/2378
-Overall_Error_Rate
+* Overall_Error_Rate = (384+165)/2378
+** Overall_Error_Rate
 
-Sensitivity = 1 - False_Negative_Rate
-Sensitivity
+* Sensitivity = 1 - False_Negative_Rate
+** Sensitivity
 
-Specificity = 1 - False_Positive_Rate
-Sensitivity
+* Specificity = 1 - False_Positive_Rate
+** Sensitivity
