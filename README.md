@@ -208,3 +208,22 @@ Error Rate Plots and ROC:
 ![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-05%20at%208.37.53%20AM.png?raw=True)
 
 ![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-05%20at%2012.28.43%20PM.png?raw=True)
+
+* fpr = 405/(1453+405)
+* False_Positive_Rate = 22%
+
+* fnr = 107/(107+413)
+* False_Negative_Rate = 21%
+
+* Overall_Error_Rate = (405+107)/2378
+* Overall_Error_Rate = 22%
+
+* Sensitivity = 1 - False_Negative_Rate
+* Sensitivity = 79%
+
+* Specificity = 1 - False_Positive_Rate
+* Sensitivity = 78%
+
+Sensitivity is 79% so roughly around 79% of the time these weather stations are correctly predicting rain tomorrow.
+
+Specificity is 78% so roughly around 78% of the time these weather stations are correctly predicting no rain tomorrow.
