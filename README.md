@@ -227,3 +227,29 @@ Error Rate Plots and ROC:
 Sensitivity is 79% so roughly around 79% of the time these weather stations are correctly predicting rain tomorrow.
 
 Specificity is 78% so roughly around 78% of the time these weather stations are correctly predicting no rain tomorrow.
+
+### Neural Network:
+My final model will be a neural network.
+
+False Positive Rate:
+
+![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-08%20at%208.10.50%20PM.png?raw=True)
+
+ROC Plot:
+
+![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-08%20at%208.12.05%20PM.png?raw=True)
+
+Based on the above plots, the cutoff rate looks to be around 0.3.
+
+Confusion Matrix:
+
+![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Rain-tomrrow/blob/main/Screen%20Shot%202021-11-08%20at%208.11.03%20PM.png?raw=True)
+
+fpr = (262)/(1564+262)
+False_Positive_Rate = 14%
+
+fnr = 162/(162+390)
+False_Negative_Rate = 30%
+
+Overall Error Rate = (262+162)/2378
+Overall Error Rate = 18%
