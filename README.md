@@ -253,3 +253,19 @@ False_Negative_Rate = 30%
 
 Overall Error Rate = (262+162)/2378
 Overall Error Rate = 18%
+
+* Sensitivity = 1 - False_Negative_Rate
+* Sensitivity = 1-30%
+* Sensitivity = 70%
+
+* Specificity = 1 - False_Positive_Rate
+* Sensitivity = 1 - 14%
+* Sensitivity = 86%
+
+Sensitivity is 70% so roughly around 70% of the time these weather stations are correctly predicting rain tomorrow.
+
+Specificity is 86% so roughly around 86% of the time these weather stations are correctly predicting no rain tomorrow.
+
+# Final Output:
+After building the four classification models, the neural network model performed best with the lowest error rate at 18%.
+Sensitivity is 70% and specificity is 86% which are prediction results.
