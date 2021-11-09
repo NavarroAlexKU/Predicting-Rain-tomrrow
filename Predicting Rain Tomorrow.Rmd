@@ -219,3 +219,137 @@ prob=predict(model,x,type="prob")
 pred=ifelse(prob[,2]>.3,1,0)
 table(pred,weather_test$RainTomorrow)
 ```
+# Neural Network:
+```{r, setup = FALSE}
+weather <- read.csv('weather.csv')
+# set seed:
+set.seed(1)
+# Split data into test/train:
+train=sample(17378,15000)
+test=(c(1:17378)[-train])
+weather_train <- weather[train,]
+weather_test <- weather[test,]
+# Since we want a classification network the variable we are predicting must be a factor variable:
+# If it wasn't a factor variable when read into R Studio, you need to change it to a factor variable.
+str(weather)
+# Min Max:
+#Min Max
+minmax = function(x){
+  x=(x-min(x))/(max(x)-min(x))
+  return(x)
+}
+# Scaling Numericals:
+weather$MinTemp <- minmax(weather$MinTemp)
+weather$MaxTemp <- minmax(weather$MaxTemp)
+weather$Rainfall <- minmax(weather$Rainfall)
+weather$Evaporation <- minmax(weather$Evaporation)
+weather$Sunshine <- minmax(weather$Sunshine)
+weather$WindGustSpeed <- minmax(weather$WindGustSpeed)
+weather$WindSpeed3pm <- minmax(weather$WindSpeed3pm)
+weather$Pressure3pm <- minmax(weather$Pressure3pm)
+weather$Cloud3pm <- minmax(weather$Cloud3pm)
+weather$Temp3pm <- minmax(weather$Temp3pm)
+weather$AveHumidity <- minmax(weather$AveHumidity)
+weather$DifHumidity <- minmax(weather$DifHumidity)
+
+#create 0-1 variables for catigoricals 
+weather$RainToday_y[weather$RainToday=="Yes"]=1
+weather$RainToday_y[weather$RainToday!="Yes"]=0
+
+weather$WindGustDir_E[weather$WindGustDir=="E"]=1
+weather$WindGustDir_E[weather$WindGustDir!="E"]=0
+weather$WindGustDir_ENE[weather$WindGustDir=="ENE"]=1
+weather$WindGustDir_ENE[weather$WindGustDir!="ENE"]=0
+weather$WindGustDir_ESE[weather$WindGustDir=="ESE"]=1
+weather$WindGustDir_ESE[weather$WindGustDir!="ESE"]=0
+weather$WindGustDir_N[weather$WindGustDir=="N"]=1
+weather$WindGustDir_N[weather$WindGustDir!="N"]=0
+weather$WindGustDir_NE[weather$WindGustDir=="NE"]=1
+weather$WindGustDir_NE[weather$WindGustDir!="NE"]=0
+weather$WindGustDir_NNE[weather$WindGustDir=="NNE"]=1
+weather$WindGustDir_NNE[weather$WindGustDir!="NNE"]=0
+weather$WindGustDir_NNW[weather$WindGustDir=="NNW"]=1
+weather$WindGustDir_NNW[weather$WindGustDir!="NNW"]=0
+weather$WindGustDir_NW[weather$WindGustDir=="NW"]=1
+weather$WindGustDir_NW[weather$WindGustDir!="NW"]=0
+weather$WindGustDir_S[weather$WindGustDir=="S"]=1
+weather$WindGustDir_S[weather$WindGustDir!="S"]=0
+weather$WindGustDir_SE[weather$WindGustDir=="SE"]=1
+weather$WindGustDir_SE[weather$WindGustDir!="SE"]=0
+weather$WindGustDir_SSE[weather$WindGustDir=="SSE"]=1
+weather$WindGustDir_SSE[weather$WindGustDir!="SSE"]=0
+weather$WindGustDir_SSW[weather$WindGustDir=="SSW"]=1
+weather$WindGustDir_SSW[weather$WindGustDir!="SSW"]=0
+weather$WindGustDir_SW[weather$WindGustDir=="SW"]=1
+weather$WindGustDir_SW[weather$WindGustDir!="SW"]=0
+weather$WindGustDir_W[weather$WindGustDir=="W"]=1
+weather$WindGustDir_W[weather$WindGustDir!="W"]=0
+weather$WindGustDir_WNW[weather$WindGustDir=="WNW"]=1
+weather$WindGustDir_WNW[weather$WindGustDir!="WNW"]=0
+
+weather$WindDir3pm_E[weather$WindDir3pm=="E"]=1
+weather$WindDir3pm_E[weather$WindDir3pm!="E"]=0
+weather$WindDir3pm_ENE[weather$WindDir3pm=="ENE"]=1
+weather$WindDir3pm_ENE[weather$WindDir3pm!="ENE"]=0
+weather$WindDir3pm_ESE[weather$WindDir3pm=="ESE"]=1
+weather$WindDir3pm_ESE[weather$WindDir3pm!="ESE"]=0
+weather$WindDir3pm_N[weather$WindDir3pm=="N"]=1
+weather$WindDir3pm_N[weather$WindDir3pm!="N"]=0
+weather$WindDir3pm_NE[weather$WindDir3pm=="NE"]=1
+weather$WindDir3pm_NE[weather$WindDir3pm!="NE"]=0
+weather$WindDir3pm_NNE[weather$WindDir3pm=="NNE"]=1
+weather$WindDir3pm_NNE[weather$WindDir3pm!="NNE"]=0
+weather$WindDir3pm_NNW[weather$WindDir3pm=="NNW"]=1
+weather$WindDir3pm_NNW[weather$WindDir3pm!="NNW"]=0
+weather$WindDir3pm_NW[weather$WindDir3pm=="NW"]=1
+weather$WindDir3pm_NW[weather$WindDir3pm!="NW"]=0
+weather$WindDir3pm_S[weather$WindDir3pm=="S"]=1
+weather$WindDir3pm_S[weather$WindDir3pm!="S"]=0
+weather$WindDir3pm_SE[weather$WindDir3pm=="SE"]=1
+weather$WindDir3pm_SE[weather$WindDir3pm!="SE"]=0
+weather$WindDir3pm_SSE[weather$WindDir3pm=="SSE"]=1
+weather$WindDir3pm_SSE[weather$WindDir3pm!="SSE"]=0
+weather$WindDir3pm_SSW[weather$WindDir3pm=="SSW"]=1
+weather$WindDir3pm_SSW[weather$WindDir3pm!="SSW"]=0
+weather$WindDir3pm_SW[weather$WindDir3pm=="SW"]=1
+weather$WindDir3pm_SW[weather$WindDir3pm!="SW"]=0
+weather$WindDir3pm_W[weather$WindDir3pm=="W"]=1
+weather$WindDir3pm_W[weather$WindDir3pm!="W"]=0
+weather$WindDir3pm_WNW[weather$WindDir3pm=="WNW"]=1
+weather$WindDir3pm_WNW[weather$WindDir3pm!="WNW"]=0
+str(weather)
+weather$RainTomorrow=factor(weather$RainTomorrow)
+# Take out unadjusted columns:
+weather.newdat=as.data.frame(weather[,-c(1:13,15,16)])
+# Split data and create test/train:
+train=sample(17378,15000)
+test=(c(1:17378)[-train])
+weather_train <- weather[train,]
+weather_test <- weather[test,]
+# Build a Neural Network:
+library(nnet)
+# Fit the Neural network for the Data: You want the lowest value
+nn_model = nnet(RainTomorrow~., data = weather_train,size = 5, maxit = 10000)
+```
+```{r, setup = FALSE}
+# The following command will plot a graph of the importance of the input variables. 
+library(NeuralNetTools)
+garson(nn_model)
+```
+
+```{r, setup = FALSE}
+# Plotting th ROC type plots:
+library(ROCR)
+prob=predict(nn_model,weather_test)
+pred=prediction(prob,weather_test$RainTomorrow)
+perf = performance(pred,"tpr","fpr")
+plot(perf,main="ROC Plot", col = c("green"))
+perf=performance(pred,"fpr","cutoff", col = c("red"))
+plot(perf,main = "FPR vs Cutoff", col = c("blue"))
+perf=performance(pred,"fnr","cutoff")
+plot(perf,main = "FNR vs Cutoff", col = c("purple"))
+# Create Confusion Matrix:
+prob = predict(nn_model,weather_test)
+pred=ifelse(prob >.3,1,0)
+table(pred,weather_test$RainTomorrow)
+```
