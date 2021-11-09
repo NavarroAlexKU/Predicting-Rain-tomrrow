@@ -268,4 +268,4 @@ Specificity is 86% so roughly around 86% of the time these weather stations are 
 
 # Final Output:
 After building the four classification models, the neural network model performed best with the lowest error rate at 18%.
-Sensitivity is 70% and specificity is 86% which are prediction results.
+Sensitivity is 70% and specificity is 86% which are great prediction results.
