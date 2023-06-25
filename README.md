@@ -4,7 +4,7 @@
 Using various classification methods, the objective of the project is to develop a model that will predict the variable "RainTomorrow" which equals "Yes" if it rained the next day and "No" if it did not rain the next day.
 
 
-![ScreenShot](https://www.news8000.com/content/uploads/2020/05/WKBT-Master-2.png?raw=True)
+![ScreenShot](https://www.gpb.org/sites/default/files/styles/three_two_702x468/public/blogs/images/2014/08/09/weather_map.jpg?h=aa995544&itok=g4tHcjDm)
 
 ## Authors
 
